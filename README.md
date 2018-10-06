@@ -28,7 +28,6 @@ Shellab requires Radare2, you should to install it running this command:
 ## Features
 
 * Encode shellcode with custom encoder 
-
 * Generate stagers and egghunters (including [sandwich](https://www.securitysift.com/eggsandwich-egghunter-integrity/) and [omelette](http://www.thegreycorner.com/2013/10/omlette-egghunter-shellcode.html) egghunter)
 * Inject shellcode into PE files
 * Run shellcode on Linux
