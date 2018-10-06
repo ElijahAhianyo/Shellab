@@ -11,8 +11,8 @@
 - [Introduction](#introduction)
 - [Requirements](#requirements)
 - [Features](#features)
-- [Future improvements]
-- [Example usage]
+- [TODO](#todo)
+- [Usage](#usage)
 - [Screenshots](#screenshots)
 - [Contribution](#contribution)
 - [License](#license)
@@ -37,13 +37,13 @@ Shellab requires Radare2, you should to install it running this command:
 * Export shellcode in different executable formats (C, C#, Python, Powershell, hex, raw etc.)
 * Add custom instructions, NOP slides and specific system calls
 
-## Future improvenemts
+## TODO
 - [ ] Create more encoders
 - [ ] Implement generation of fully alphanumeric shellcode
 - [ ] Add shellcode comparison mechanism
 
 
-## Example usage
+## Usage
 This example will encode the input shellcode with "rot_xor" encoder, insert "xor eax, eax" instruction and 100 non-canonical NOP instructions in front of it, generate a bind stager (that will listen for the incoming shellcode on port 4444) and prepend the shellcode with exit() syscall.
 ###### Show help message:
 <img src="screenshots/help_screenshot.png" width="600"/>
