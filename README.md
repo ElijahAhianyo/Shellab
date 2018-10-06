@@ -1,5 +1,5 @@
 <h1 align="center"> Shellab </h1> 
-<h5 align="center"> Linux and Windows shellcode development/enrichment utility </h5> 
+<h3 align="center"> Linux and Windows shellcode development/enrichment utility </h3> 
 <p align="center">
   <a>
     <img alt="Shellab" title="Shellab" src="flask.png" width="380" height="450">
@@ -11,8 +11,8 @@
 - [Introduction](#introduction)
 - [Requirements](#requirements)
 - [Features](#features)
-- [Future improvements](#future improvements)
-- [Example usage](#example usage)
+- [Future improvements]
+- [Example usage]
 - [Screenshots](#screenshots)
 - [Contribution](#contribution)
 - [License](#license)
@@ -43,19 +43,19 @@ Shellab requires Radare2, you should to install it running this command:
 - [ ] Add shellcode comparison mechanism
 
 
-##Example usage
+## Example usage
 This example will encode the input shellcode with "rot_xor" encoder, insert "xor eax, eax" instruction and 100 non-canonical NOP instructions in front of it, generate a bind stager (that will listen for the incoming shellcode on port 4444) and prepend the shellcode with exit() syscall.
-######Show help message:
+###### Show help message:
 <img src="screenshots/help_screenshot.png" width="600"/>
-######List available components:
+###### List available components:
 <img src="screenshots/list_screenshot.png" width="600"/>
-######Generate the shellcode:
+###### Generate the shellcode:
 <img src="screenshots/example.png" width="600"/>
 
 
 
 
-##Contribution
+## Contribution
 If you have an idea for a new encoder, egghunter or stager, or just want to improve this tool, simply create a pull request :)
 
 ## License
