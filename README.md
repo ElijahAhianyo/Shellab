@@ -44,11 +44,16 @@ Shellab requires Radare2, you should to install it running this command:
 
 ## Usage
 This example will encode the input shellcode with "rot_xor" encoder, insert "xor eax, eax" instruction and 100 non-canonical NOP instructions in front of it, generate a bind stager (that will listen for the incoming shellcode on port 4444) and prepend the shellcode with exit() syscall.
-###### Show help message:
+
+### Show help message:
 <img src="screenshots/help_screenshot.png" width="600"/>
-###### List available components:
+
+### List available components:
+
 <img src="screenshots/list_screenshot.png" width="600"/>
-###### Generate the shellcode:
+
+### Generate the shellcode:
+
 <img src="screenshots/example.png" width="600"/>
 
 
