@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/python3
 import math
 def seh_injection(tag, payload):
     payload = tag*2 + payload

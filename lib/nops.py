@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/python3
 import random
 
 def x86(length, use_non_canonical):
@@ -79,10 +79,10 @@ def x64(length, use_non_canonical):
             nopsled.append(nop)
             nopsled_len += len(nop)
         addition = nopsled_len%length
-        print addition
+        print(addition)
         if addition != 0:
             last_element = nopsled[-1]
-            print len(last_element)
+            print(len(last_element))
             del nopsled[-1]
             nopsled = ''.join(nopsled) + single_nop * (len(last_element)-addition)
         else:

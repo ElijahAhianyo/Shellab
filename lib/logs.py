@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 from os.path import expanduser
@@ -43,7 +43,7 @@ class Logs:
 def err(msg, prnt=True):
 		p = '[%s] %s' % (colored('✘', 'red'), msg)
 		if prnt:
-			print p
+			print(p)
 		return p
 
 def purple(msg):
@@ -53,7 +53,7 @@ def purple(msg):
 def good(msg, prnt=True):
 		p = '[%s] %s' % (colored('✔', 'green'), msg)
 		if prnt:
-			print p
+			print(p)
 		return p
 
 def underline(msg):
@@ -80,7 +80,7 @@ def bold(msg):
 def wrn(msg, prnt=True):
 		p = '[%s] %s' % (colored('WARNING', 'red'), msg)
 		if prnt:
-			print p
+			print(p)
 		return p
 
 
@@ -88,12 +88,12 @@ def wrn(msg, prnt=True):
 def info(msg, prnt=True):
 		info = '[INFO] %s' % msg
 		if prnt:
-			print info
+			print(info)
 		return info
 
 def star(msg, color='magenta', pnt=True):
 		p = '%s%s' %(colored('✶', color), msg)
-		print p
+		print(p)
 
 def e(comm):
 	subprocess.call(comm, shell = True)
@@ -116,4 +116,4 @@ def print_exception():
 		filename = f.f_code.co_filename
 		linecache.checkcache(filename)
 		line = linecache.getline(filename, lineno, f.f_globals)
-		print '\n[{}][{}][{}] => {}): {}'.format(red('EXCEPTION'), filename.split('/')[-1], lineno, line.strip(), exc_obj)
+		print('\n[{}][{}][{}] => {}): {}'.format(red('EXCEPTION'), filename.split('/')[-1], lineno, line.strip(), exc_obj))

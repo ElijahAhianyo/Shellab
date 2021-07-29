@@ -22,8 +22,8 @@
 Shellab is a tool that can be used to improve existing shellcodes and adapt them for personal needs. Developed to provide an alternative to msfvenom with new functionalities. Suitable for both Windows and Linux shellcode (32 and 64 bit). 
 
 ## Requirements
-Shellab requires Radare2, you should install it running this command:
-`$ sudo apt-get install radare2`
+Shellab requires Radare2 and dependencies provided in `requirements.txt` file, you should install it running this command:
+`$ sudo apt-get install radare2 && python3 -m pip install -r requirements.txt`
 
 ## Features
 

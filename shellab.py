@@ -1,9 +1,9 @@
-#!/usr/bin/python2.7
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 import argparse
 import binascii
-from commands import getoutput
+from subprocess import getoutput
 import lib.logs as logs
 import lib.nops as nops
 import lib.wrappers as wrappers
@@ -22,7 +22,7 @@ import re
 import json
 
 PATH = __file__.replace('./shellab.py', '')
-print PATH
+print(PATH)
 
 class WrongShellcodeFormat(Exception):
     pass
@@ -75,7 +75,7 @@ def remove_badchars(scode, badchars):
     return scode
 
 def list_all():
-    print '\n{}ENCODERS{}'.format(logs.bold(logs.purple('>>')),logs.bold(logs.purple('<<')))
+    print('\n{}ENCODERS{}'.format(logs.bold(logs.purple('>>')),logs.bold(logs.purple('<<'))))
     table_data = [['--NAME--', '--ARCH--', '--DESCRIPTION--', '--RANK--']]
     encoders = []
     for enc in os.walk(PATH+'encoders'):
@@ -105,9 +105,9 @@ def list_all():
     table_instance.inner_heading_row_border = True
     table_instance.inner_row_border = False
     table_instance.justify_columns = {0: 'left', 1: 'left', 2: 'left'}
-    print table_instance.table
+    print(table_instance.table)
 
-    print '\n{}EGGHUNTERS{}'.format(logs.bold(logs.purple('>>')),logs.bold(logs.purple('<<')))
+    print('\n{}EGGHUNTERS{}'.format(logs.bold(logs.purple('>>')),logs.bold(logs.purple('<<'))))
     table_data = [['--NAME--', '--PLATFORM--', '--SIZE--', '--EGG SIZE--']]
     for egg in eggs:
         table_data.append([egg, eggs[egg][1],'{} bytes'.format(eggs[egg][2]),'{} bytes'.format(eggs[egg][3])])
@@ -115,9 +115,9 @@ def list_all():
     table_instance.inner_heading_row_border = True
     table_instance.inner_row_border = False
     table_instance.justify_columns = {0: 'left', 1: 'left', 2: 'left'}
-    print table_instance.table
+    print(table_instance.table)
 
-    print '\n{}FORMATS{}'.format(logs.bold(logs.purple('>>')),logs.bold(logs.purple('<<')))
+    print('\n{}FORMATS{}'.format(logs.bold(logs.purple('>>')),logs.bold(logs.purple('<<'))))
     table_data = [['--FORMAT--', '--DESCRIPTION--']]
     for func in dir(wrappers):
         if "format_"  in func:
@@ -126,7 +126,7 @@ def list_all():
     table_instance.inner_heading_row_border = True
     table_instance.inner_row_border = False
     table_instance.justify_columns = {0: 'left', 1: 'left', 2: 'left'}
-    print table_instance.table
+    print(table_instance.table)
 
 def arguments():
     parser = argparse.ArgumentParser(prog='shelab')
@@ -402,8 +402,8 @@ def main():
         stager = '\\x' + '\\x'.join([binascii.hexlify(op) for op in stager])
         stager = '\n'.join(textwrap.wrap(stager, 32))
         if not res.PURE:
-            print '\n{} ({} bytes):'.format(logs.purple(logs.bold('STAGER')), len(stager)/4)
-            print stager
+            print('\n{} ({} bytes):'.format(logs.purple(logs.bold('STAGER')), len(stager)/4))
+            print(stager)
 
     if res.RUN:
         libc = CDLL('libc.so.6')
@@ -452,24 +452,24 @@ def main():
             egg = ''.join(egg_escaped)
             egg = '\n'.join(textwrap.wrap(egg, 32))
             if not res.PURE:
-                print '\n{} ({} bytes):'.format(logs.purple(logs.bold('EGGHUNTER')), len(egg)/4)
-                print egg
+                print('\n{} ({} bytes):'.format(logs.purple(logs.bold('EGGHUNTER')), len(egg)/4))
+                print(egg)
 
 
     if res.INFO:
         if not res.PURE:
-            print '\n{}:'.format(logs.bold(logs.purple('INFO')))
-            print '| Length: {}'.format(len(scode))
+            print('\n{}:'.format(logs.bold(logs.purple('INFO'))))
+            print('| Length: {}'.format(len(scode)))
             nullbytes = scode.count('\x00')
             if nullbytes == 0:
                 nullbytes = logs.green(nullbytes)
             else:
                 nullbytes = logs.red(nullbytes)
-            print '| Null bytes: {}'.format(nullbytes)
-            print '| Nops: {}'.format(logs.purple(scode.count('\x90')))
-            print '| Returns: {}'.format(scode.count('\xc3'))
-            print '| Interrupts: {}'.format(logs.yellow(scode.count('\xcc')))
-            print '| System calls: {}'.format(logs.bold(scode.count('\xcd\x80')))
+            print('| Null bytes: {}'.format(nullbytes))
+            print('| Nops: {}'.format(logs.purple(scode.count('\x90'))))
+            print('| Returns: {}'.format(scode.count('\xc3')))
+            print('| Interrupts: {}'.format(logs.yellow(scode.count('\xcc'))))
+            print('| System calls: {}'.format(logs.bold(scode.count('\xcd\x80'))))
 
     if res.PATTERN:
         def generate_pattern(length):
@@ -487,9 +487,9 @@ def main():
         summary.append(logs.good('Prepended shellcode with cyclic pattern',prnt=False))
 
     if not res.PURE:
-        print '\n{}:'.format(logs.purple(logs.bold('SUMMARY')))
+        print('\n{}:'.format(logs.purple(logs.bold('SUMMARY'))))
         for s in summary:
-            print s
+            print(s)
 
     if res.FORMAT:
         scode_len = len(scode)
@@ -504,8 +504,8 @@ def main():
             summary.append(logs.good('Saved shellcode as {}'.format(res.OUTPUT), prnt=False))
         else:
             if not res.PURE:
-                print '\n{} ({} bytes of shellcode):'.format(logs.purple(logs.bold('FINAL PAYLOAD')), scode_len)
-            print formatted
+                print('\n{} ({} bytes of shellcode):'.format(logs.purple(logs.bold('FINAL PAYLOAD')), scode_len))
+            print(formatted)
 
     
 
