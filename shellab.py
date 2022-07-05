@@ -21,7 +21,7 @@ from string import ascii_uppercase, ascii_lowercase
 import re
 import json
 
-PATH = __file__.replace('./shellab.py', '')
+PATH = __file__.replace('shellab.py', '')
 print(PATH)
 
 class WrongShellcodeFormat(Exception):
@@ -77,10 +77,7 @@ def remove_badchars(scode, badchars):
 def list_all():
     print('\n{}ENCODERS{}'.format(logs.bold(logs.purple('>>')),logs.bold(logs.purple('<<'))))
     table_data = [['--NAME--', '--ARCH--', '--DESCRIPTION--', '--RANK--']]
-    encoders = []
-    for enc in os.walk(PATH+'encoders'):
-        encoders.append(enc)
-    encoders = encoders[0][2]
+    encoders = next(os.walk(PATH + 'encoders'), (None, None, []))[2]
     cdrs = []
     for enc in encoders:
         if ('init' in enc or '.pyc' in enc):
